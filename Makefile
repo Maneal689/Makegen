@@ -1,4 +1,4 @@
-NAME	=	Makegen
+NAME	=	a.out
 
 SRCS	=	./src/writer.cpp		\
 			./src/list_files.cpp	\
@@ -7,13 +7,13 @@ SRCS	=	./src/writer.cpp		\
 
 OBJS	=	$(SRCS:.cpp=.o)
 
-CFLAGS	=	-W -Wall -Wextra -Werror
+#CFLAGS	=	-W -Wall -Wextra -Werror
 CFLAGS	+=	-I ./include
 
 all:	$(NAME)
 
 $(NAME):
-		g++ -o $(NAME) $(OBJS) $(CFLAGS)
+		g++ -o $(NAME) $(SRCS) $(CFLAGS)
 
 clean:
 		rm -f $(OBJS)

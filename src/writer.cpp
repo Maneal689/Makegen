@@ -105,7 +105,7 @@ void write_fnc(std::string compilator){
     std::ofstream    writer("Makefile", std::ios::app);
 
     writer << "all:\t$(NAME)\n" << std::endl;
-    writer << "$(NAME):\n\t\t" << compilator << " -o $(NAME) $(OBJS) $(CFLAGS)\n" << std::endl;
+    writer << "$(NAME):\n\t\t" << compilator << " -o $(NAME) $(SRCS) $(CFLAGS)\n" << std::endl;
     writer << "clean:\n\t\trm -f $(OBJS)\n" << std::endl;
     writer << "fclean:\tclean\n\t\trm -f $(NAME)\n" << std::endl;
     writer << "re:\tfclean all" << std::endl;
