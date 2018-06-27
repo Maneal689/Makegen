@@ -1,24 +1,33 @@
-NAME	=	a.out
+CC		=	g++
 
-SRCS	=	./src/writer.cpp		\
+EXEC	=	Makegen
+
+SRC		=	./src/writer.cpp		\
 			./src/list_files.cpp	\
 			./src/main.cpp			\
 			./src/file_op.cpp
 
-OBJS	=	$(SRCS:.cpp=.o)
+OBJ		=	$(SRC:.cpp=.o)
 
-#CFLAGS	=	-W -Wall -Wextra -Werror
+LDFLAGS	=	
+
+CFLAGS	=	-W -Wall -Wextra
 CFLAGS	+=	-I ./include
 
-all:	$(NAME)
+all:	$(EXEC)
 
-$(NAME):
-		g++ -o $(NAME) $(SRCS) $(CFLAGS)
+$(EXEC):	$(OBJ)
+		$(CC) -o $(EXEC) $(OBJ)
+
+%.o:	%.cpp
+		$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-		rm -f $(OBJS)
+		rm -f $(OBJ)
 
-fclean:	clean
-		rm -f $(NAME)
+mrproper:	clean
+		rm -f $(EXEC)
 
-re:	fclean all
+re:	mrproper all
+
+.PHONY: clean mrproper
